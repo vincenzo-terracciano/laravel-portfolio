@@ -28,7 +28,7 @@ class ProjectsTableSeeder extends Seeder
             $newProject->title = $faker->sentence(3);
             $newProject->description = $faker->paragraph(3);
             $newProject->image = $faker->imageUrl(640, 480, true);
-            $newProject->technologies = implode(',', $technologies);
+            $newProject->technologies = implode(', ', $technologies);
             $newProject->github_url = $faker->url();
             $newProject->site_url = $faker->url();
             $newProject->created_at = $faker->dateTimeBetween('-2 years', 'now');
