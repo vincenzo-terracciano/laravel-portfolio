@@ -76,7 +76,10 @@
             />
         </div>
 
-        <input type="submit" value="Salva">
+        <div class="d-flex gap-3 my-4">
+            <a class="btn btn-primary" href="{{ route("projects.index") }}">Torna all'elenco</a>
+            <input class="btn btn-success" type="submit" value="Salva">
+        </div>
         
     </form>
 @endsection
