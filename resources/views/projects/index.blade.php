@@ -3,7 +3,7 @@
 @section('content')
     
 <div class="container">
-    <h1>I miei progetti</h1>
+    <h1 class="my-5">I miei progetti</h1>
 
     <table class="table">
         <thead>
@@ -24,7 +24,11 @@
                     <td><a href="{{ $project->github_url }}" target="_blank">Repo</a></td>
                     <td><a href="{{ $project->site_url }}" target="_blank">Sito</a></td>
                     <td> {{ $project->created_at->format('y/m/Y') }} </td>
-                    <td></td>
+                    <td>
+                        <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary btn-sm">
+                            Visualizza
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
