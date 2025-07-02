@@ -26,6 +26,7 @@ class ProjectsTableSeeder extends Seeder
             );
 
             $newProject->title = $faker->sentence(3);
+            $newProject->type_id = rand(1, 5);
             $newProject->description = $faker->paragraph(3);
             $newProject->image = $faker->imageUrl(640, 480, true);
             $newProject->technologies = implode(', ', $technologies);

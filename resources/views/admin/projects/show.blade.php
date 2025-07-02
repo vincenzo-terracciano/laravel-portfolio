@@ -4,6 +4,10 @@
 
 
     <h1> {{ $project->title }} </h1>
+
+    <p>
+        <strong>Tipo:</strong> {{ $project->type ? $project->type->name : 'Nessun tipo' }}
+    </p>
     
     <div class="image my-4">
         <img src="{{ $project->image }}" alt="{{ $project->title }}" class="img-fluid rounded">
