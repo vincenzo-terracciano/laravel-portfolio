@@ -25,8 +25,8 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
 
-        Route::get("/", [DashboardController::class, 'index'])
-            ->name('index');
+        Route::get("/", [DashboardController::class, 'home'])
+            ->name('home');
 
         Route::get("/profile", [DashboardController::class, 'profile'])
             ->name('profile');

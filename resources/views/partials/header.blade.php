@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-md">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('admin.index') }}">Dashboard</a>
+        <a class="navbar-brand" href="{{ route('admin.home') }}">Dashboard</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false"
