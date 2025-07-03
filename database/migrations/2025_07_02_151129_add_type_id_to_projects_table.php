@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // aggiungo la colonna con la foreign key
-            $table->foreignId('type_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('type_id')->nullable()->after('id')->constrained()->onDelete('set null');
         });
     }
 

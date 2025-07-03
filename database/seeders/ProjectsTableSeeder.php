@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +16,8 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
+        // prendo tutte le tecnologie
+        $technologies = Technology::all();
 
         for ($i = 0; $i < 10; $i++) {
 
@@ -30,6 +33,12 @@ class ProjectsTableSeeder extends Seeder
             $newProject->updated_at = now();
 
             $newProject->save();
+
+            // scelgo casualmente da 2 a 4 tecnologie estraendo una lista di ID
+            $randomTechnologies = $technologies->random(rand(2, 4))->pluck('id');
+
+            // associo le tecnologie casuali al progetto
+            $newProject->technologies()->attach($randomTechnologies);
         }
     }
 }
