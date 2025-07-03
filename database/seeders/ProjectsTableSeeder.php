@@ -20,16 +20,10 @@ class ProjectsTableSeeder extends Seeder
 
             $newProject = new Project();
 
-            $technologies = $faker->randomElements(
-                ['HTML', 'CSS', 'JavaScript', 'React', 'Express.js', 'Node.js', 'PHP', 'Laravel', 'MySQL'],
-                rand(2, 4)
-            );
-
             $newProject->title = $faker->sentence(3);
             $newProject->type_id = rand(1, 5);
             $newProject->description = $faker->paragraph(3);
             $newProject->image = $faker->imageUrl(640, 480, true);
-            $newProject->technologies = implode(', ', $technologies);
             $newProject->github_url = $faker->url();
             $newProject->site_url = $faker->url();
             $newProject->created_at = $faker->dateTimeBetween('-2 years', 'now');
