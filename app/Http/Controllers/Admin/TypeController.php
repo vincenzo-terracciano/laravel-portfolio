@@ -55,8 +55,6 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        $allTypes = Type::all();
-
         return view('admin.types.edit', compact('type', 'allTypes'));
     }
 

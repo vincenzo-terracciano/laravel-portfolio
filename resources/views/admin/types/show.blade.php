@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <h1> {{ $type->name }} </h1>
     
     <div class="d-flex gap-3 align-items-center py-4">

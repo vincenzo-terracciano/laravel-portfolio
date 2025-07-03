@@ -11,14 +11,14 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label for="name" class="form-label">Nome tipologia</label>
-            <select name="name" id="name" class="form-select">
-                @foreach ($allTypes as $typeOption)
-                    <option value="{{ $typeOption->name }}" {{ $type->name == $typeOption->name ? 'selected' : '' }}>
-                        {{ $typeOption->name }}
-                    </option>
-                @endforeach
-            </select>
+            <label for="name" class="form-label">Nome Tipologia</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                value="{{ $type->name }}"
+            />
         </div>
 
         <div class="d-flex gap-3 my-4">
