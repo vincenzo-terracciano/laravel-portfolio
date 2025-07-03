@@ -3,12 +3,8 @@
 @section('content')
 
 
-    <h1> {{ $project->title }} </h1>
+    <h1 class="mb-4"> {{ $project->title }} </h1>
 
-    <p>
-        <strong>Tipo:</strong> {{ $project->type ? $project->type->name : 'Nessun tipo' }}
-    </p>
-    
     <div class="image my-4">
         <img src="{{ $project->image }}" alt="{{ $project->title }}" class="img-fluid rounded">
     </div>
@@ -16,7 +12,18 @@
     <h5>Descrizione</h5>
     <p> {{ $project->description }} </p>
 
-    <p><strong>Tecnologie utilizzate:</strong> {{ $project->technologies }} </p>
+    <p>
+        <strong>Tipo:</strong> {{ $project->type ? $project->type->name : 'Nessun tipo' }}
+    </p>
+
+    @if (count($project->technologies) > 0)
+    <p>
+        <strong>Tecnologie utilizzate:</strong>
+        @foreach ($project->technologies as $technology)
+            <span class="badge rounded-pill" style="background-color: {{ $technology->color }}"> {{ $technology->name }} </span>
+        @endforeach
+    </p>
+    @endif
 
     <p>
         <strong>GitHub:</strong>

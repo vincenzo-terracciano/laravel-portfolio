@@ -55,15 +55,28 @@
             />
         </div>
 
+        {{-- Technologies --}}
         <div class="mb-3">
-            <label for="technologies" class="form-label">Tecnologie utilizzate</label>
-            <input
-                type="text"
-                class="form-control"
-                name="technologies"
-                id="technologies"
-                value="{{ $project->technologies }}"
-            />
+            <label class="form-label d-block">Tecnologie utilizzate</label>
+            <div class="border rounded p-2">
+
+                @foreach ($technologies as $technology)
+                    
+                <div class="form-check">
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="technologies[]"
+                        value="{{ $technology->id }}"
+                        id="technology - {{ $technology->id }}"
+                        {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                    />
+                    <label class="form-check-label" for="technology - {{ $technology->id }}"> {{ $technology->name }} </label>
+                </div>
+    
+                @endforeach
+
+            </div>
         </div>
 
         <div class="mb-3">

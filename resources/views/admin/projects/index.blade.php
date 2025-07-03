@@ -14,7 +14,6 @@
             <tr>
                 <th>Titolo</th>
                 <th>Tipo</th>
-                <th>Tecnologie</th>
                 <th>GitHub</th>
                 <th>Sito</th>
                 <th>Creato il</th>
@@ -26,7 +25,6 @@
                 <tr>
                     <td> {{ $project->title }} </td>
                     <td> {{ $project->type ? $project->type->name : '-' }} </td>
-                    <td> {{ $project->technologies }} </td>
                     <td><a href="{{ $project->github_url }}" target="_blank">Repo</a></td>
                     <td><a href="{{ $project->site_url }}" target="_blank">Sito</a></td>
                     <td> {{ $project->created_at->format('y/m/Y') }} </td>

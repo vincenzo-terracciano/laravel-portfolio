@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        // preno i tipi
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+
+        // prendo le tecnologie
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -41,11 +47,17 @@ class ProjectController extends Controller
         $newProject->type_id = $data["type_id"];
         $newProject->description = $data["description"];
         $newProject->image = $data["image"];
-        $newProject->technologies = $data["technologies"];
         $newProject->github_url = $data["github_url"];
         $newProject->site_url = $data["site_url"];
 
         $newProject->save();
+
+        // verifico se ricevo le tecnologie
+        if ($request->has("technologies")) {
+
+            // aggiungo alla tabella pivot tutti le tecnologie selezionate collegate al progetto in questione
+            $newProject->technologies()->attach($data["technologies"]);
+        }
 
         return redirect()->route('projects.show', $newProject->id);
     }
@@ -64,7 +76,11 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+
+        // prendo le tecnologie
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -78,11 +94,21 @@ class ProjectController extends Controller
         $project->type_id = $data["type_id"];
         $project->description = $data["description"];
         $project->image = $data["image"];
-        $project->technologies = $data["technologies"];
         $project->github_url = $data["github_url"];
         $project->site_url = $data["site_url"];
 
         $project->update();
+
+        // verifico se ricevo le tecnologie
+        if ($request->has("technologies")) {
+
+            // sincronizzo le tecnologie della tabella pivot
+            $project->technologies()->sync($data["technologies"]);
+        } else {
+
+            // se non ricevo le tecnologie allora elimino dalla tavella pivot tutte le tecnologie collegate al progetto in questione
+            $project->technologies()->detach();
+        }
 
         return redirect()->route('projects.show', $project->id);
     }
