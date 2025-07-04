@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="color" class="form-label">Colore</label>
             <input type="color" name="color" id="color" class="form-control form-control-color"
-                value="{{ $technology->color }}">
+                value="{{ old('color', $technology->color ?? '#999999') }}">
         </div>
 
         <div class="d-flex gap-3 my-4">
