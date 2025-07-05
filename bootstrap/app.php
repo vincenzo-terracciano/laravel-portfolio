@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
             config([
                 'cors' => [
                     'paths' => ['api/*'],
-                    'allowed_origins' => ['http://localhost:5173'], // React dev server
+                    'allowed_origins' => ['http://localhost:5174'],
                     'allowed_methods' => ['*'],
                     'allowed_headers' => ['*'],
                 ]
